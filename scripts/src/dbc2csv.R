@@ -4,15 +4,20 @@
 #ativa a lib
 library("read.dbc")
 
-#####
 # converter arquivos dbc em csv
-# leio o dbc
-x <- read.dbc("../raw-data/ERSP1807.dbc")
-#escrevo o csv
-write.csv(x,file="../converted-data/ERSP1807.csv")
+dbc2dbf <- function(rawDir, convertedDir, file) {
+    # leio o dbc
+    x <- read.dbc(paste(rawDir, file, sep=""))
+    #escrevo o csv
+    write.csv(x, file=paste(convertedDir, file, ".csv", sep=""))
+    print(paste('Converted: ', file))
+}
 
-#ver csv salvo
-#x <- read.csv("/Users/lucas/Documents/P??s-POLI/Monografia/ACFSP1803.csv")
-#View(x)
-#str(x)
-print('\n\n converted: ERSP1807.dbc')
+###
+args = commandArgs(trailingOnly=TRUE)
+# Tests if there are the three needed args: raw dir, converted dir and filename
+if (length(args)<3) {
+  stop("[(R) dbc2csv] error converting file", call.=FALSE)
+}
+
+try(dbc2dbf(args[1], args[2], args[3]), TRUE)

@@ -34,7 +34,7 @@ def system():
         exit(1)
 
     if system in ['SIHSUS', 'SIASUS', 'SIM', 'CIH', 'CIHA', 'SINASC', 'SISPRENATAL']:
-        print('Selected system: ' + system)
+        # print('Selected system: ' + system)
         return system
 
     print('System: '+system+' does not exist in Datasus')
@@ -55,7 +55,7 @@ def get_types():
             print('Type: '+type+' does not exist in system '+system)
             exit(1)
 
-    print('Selected types: ' + str(types))
+    # print('Selected types: ' + str(types))
     return types
 
 
@@ -77,6 +77,7 @@ def date_to():
 
     return date_to
 
+
 """
 Gets range data to read available files
 """
@@ -94,9 +95,8 @@ def getDateRange():
     toYear = toFilter.split('/')[1]
 
     start = datetime.datetime.strptime("01-"+fromMonth+"-"+fromYear, "%d-%m-%Y")
-    end = datetime.datetime.strptime("31-"+toMonth+"-"+toYear, "%d-%m-%Y")
+    end = datetime.datetime.strptime("01-"+toMonth+"-"+toYear, "%d-%m-%Y")
 
     dateRange = pd.date_range(start, end, freq='MS').strftime("%y%m").tolist()
 
     return dateRange
-

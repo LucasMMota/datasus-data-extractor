@@ -1,34 +1,24 @@
-#python datasus-loader.py --fromSystems 'SIA,SIH,SINASC' --toDatabase '<mongo-dbase-name>'
-#--filterFrom '01/2010' --filterTo '12/2011' --filterUF 'SP,RJ'
-# filters
-
-# todo: mapear ranges e retornar msg quando não tem
-
-import subprocess
 import src.filters as filters
 import src.downloader as downloader
-
-def getPath(system, type, date, state):
-
-    filename = type + state + date + '.dbc'
-    path = 'ftp://ftp.datasus.gov.br/dissemin/publicos/'+system+'/200801_/Dados/'+filename
-
-    print('Path: ')
-    print(path)
-    return path
+from src.utils import build_file_path
+from src.converter import dbc2dbf
 
 
+# todo: mapear ranges e retornar msg quando não tem
 def main():
     print('iniciando...')
 
     for date in filters.getDateRange():
         for type in filters.get_types():
             for state in filters.states():
-                srcFile = getPath(filters.system(), type, date, state)
-                print('\nDownloading ' + srcFile)
-                downloader.download(srcFile)
+                print('Selected date: ' + date)
+                print('Selected type: ' + type)
+                print('Selected state: ' + state)
 
-                # convert
+                src_file, filename = build_file_path(filters.system(), type, date, state)
+                downloader.download(src_file, filename)
+
+                dbc2dbf(filename)
                 # load into db
 
 

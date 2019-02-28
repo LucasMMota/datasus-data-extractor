@@ -1,3 +1,10 @@
+from os.path import dirname, abspath
+
+RAW_FILES_DIR = dirname(dirname(abspath(__file__)))+'/raw-files/'
+ERROR_LOG_FILES_DIR = dirname(dirname(abspath(__file__)))+'/error-logs/'
+SRC_DIR = (dirname(abspath(__file__)))
+CONVERTED_FILES_DIR = dirname(dirname(abspath(__file__)))+'/converted-files/'
+
 """
     SIHSUS
         RD - AIH Reduzida
@@ -44,7 +51,6 @@
     SISPRENATAL
         PN - Pré-Natal
 """
-
 DATASUS_DB_TYPES = {
     'SIHSUS': ['RD', 'RJ', 'SP', 'ER'],
     'SIASUS': ['AB', 'ABO', 'ACF', 'AD', 'AM', 'AN', 'AQ', 'AR', 'ATD', 'PA', 'PS', 'SAD'],
