@@ -1,6 +1,6 @@
-import shutil
-import urllib2
-from contextlib import closing
+# import shutil
+# import urllib2
+# from contextlib import closing
 import canmatrix.convert as cv
 
 datasus_basedir = 'ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/dados/'
@@ -17,7 +17,7 @@ dsus_file = 'CIH-CR.dbc.dbc'
 #         print(f)
 
 # convertion
-cv.mainContedvert(
+cv.mainConvert(
     '/Users/lucas/Documents/Pos-POLI/Monografia-2019/datasus-data-extractor/pyhton/ERSP1807.dbc',
     '/Users/lucas/Documents/Pos-POLI/Monografia-2019/datasus-data-extractor/pyhton/ERSP180.dbf')
 

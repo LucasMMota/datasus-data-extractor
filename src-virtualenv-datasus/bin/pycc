@@ -1,0 +1,3 @@
+#!/Users/lucas/Documents/Pos-POLI/Monografia-2019/datasus-data-extractor/src-virtualenv-datasus/bin/python3.7
+from numba.pycc import main
+main()

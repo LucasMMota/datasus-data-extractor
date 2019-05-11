@@ -4,3 +4,7 @@ def build_file_path(system, type, date, state):
     path = '/dissemin/publicos/'+system+'/200801_/Dados/'
 
     return path, filename
+
+
+def get_downloaded_size():
+    return 50

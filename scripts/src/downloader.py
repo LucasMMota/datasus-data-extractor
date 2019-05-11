@@ -27,6 +27,7 @@ def download(file_path, filename):
         ftp.login()
         ftp.cwd(file_path)
         result = ftp.retrbinary("RETR " + filename, open(raw_file, 'wb').write)
+        #if_file_is_empty_delete_it(filename)#it's better to delete on local than list all the files in ftp
         ftp.quit()
         save_log_on_errors(result, filename)
     except:

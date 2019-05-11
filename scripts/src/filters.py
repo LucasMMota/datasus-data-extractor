@@ -100,3 +100,7 @@ def getDateRange():
     dateRange = pd.date_range(start, end, freq='MS').strftime("%y%m").tolist()
 
     return dateRange
+
+
+def getDownloadLimit():
+    return 1000
